@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Rupa ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7') no-repeat center center/cover;
+}
+
+/* Dark overlay */
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    text-shadow: 0 0 15px pink;
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 15px;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background-color: white;
+    color: #ff4e50;
+}
+
+#noBtn {
+    background-color: black;
+    color: white;
+    position: absolute;
+}
+
+#message {
+    font-size: 1.6rem;
+    margin-top: 20px;
+    display: none;
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    font-size: 24px;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Sparkles */
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    animation: sparkle 1.5s infinite alternate;
+}
+
+@keyframes sparkle {
+    from { opacity: 0.2; }
+    to { opacity: 1; }
+}
+
+iframe {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Rupa will you be my Valentine? ❤️</h1>
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+    <div id="message"></div>
+</div>
+
+<!-- Background Music -->
+<iframe width="0" height="0"
+src="https://www.youtube.com/embed/qHq2nS0LhHk?autoplay=1&loop=1&playlist=qHq2nS0LhHk"
+allow="autoplay">
+</iframe>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const message = document.getElementById("message");
+
+noBtn.addEventListener("click", function() {
+    const x = Math.floor(Math.random() * (window.innerWidth - 100));
+    const y = Math.floor(Math.random() * (window.innerHeight - 50));
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+yesBtn.addEventListener("click", function() {
+    const startDate = new Date("January 24, 2024 00:00:00");
+    const now = new Date();
+    const diff = now - startDate;
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+
+    message.style.display = "block";
+    message.innerHTML =
+        "We are already lovers from 24 Jan 2024 ❤️<br><br>" +
+        hours + " hours together and counting 💕";
+
+    yesBtn.style.display = "none";
+    noBtn.style.display = "none";
+});
+
+// Floating hearts
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}, 400);
+
+// Sparkles
+setInterval(() => {
+    const sparkle = document.createElement("div");
+    sparkle.classList.add("sparkle");
+    sparkle.style.left = Math.random() * window.innerWidth + "px";
+    sparkle.style.top = Math.random() * window.innerHeight + "px";
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 1500);
+}, 200);
+</script>
+
+</body>
+</html>
